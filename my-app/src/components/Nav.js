@@ -9,6 +9,9 @@ const Navbar = ()=>{
         <li>
         <Link to="/Search">Recipe</Link>
         </li>
+        <li>
+        <Link to="/Search/">Profile</Link>
+        </li>
     </div>)
 } 
 export default Navbar;
