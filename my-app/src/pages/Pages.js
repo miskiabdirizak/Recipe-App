@@ -1,12 +1,14 @@
-//Render out home page here => needed for routing b/c its a big file 
-//Holds all the pages that will be linked to the home page
 import React from 'react'
 import Home from './Home'
+import Search from '../components/RecipeSearch'
+import Navbar from "../components/Nav"
+import Recipe from '../components/Recipe'
 
+//Recipe search is the home page for now
 function Pages() {
   return (
     <div>
-        <Home />
+      <Search />
     </div>
   )
 }
