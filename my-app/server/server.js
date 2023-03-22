@@ -16,20 +16,19 @@ app.get('/recipes/:query', async (req, res) => {
     console.log(response.data.hits)
     res.json(response.data.hits)
 })
-/* REGISTERATION sql code
-
-
-app.get('/account',async (req,res)=>{
+app.get('/createAccount',async (req,res)=>{
     
+    const username = req.query.username
     const password = req.query.password
     const email = req.query.email
-    console.log(password)
+    const name = req.query.name
+    console.log(req.query)
     db.connect((err)=>{
         if (err)
         throw err
         console.log("connected")
     });
-    db.query(`INSERT INTO info (email,password) VALUES ("${email}","${password}");`
+    db.query(`INSERT INTO info (email, password, username, name) VALUES ("${email}","${password}" ,"${username}" ,"${name}");`
     ,(error,results,fields)=>{
         if(error)throw error
         console.log(results)
@@ -38,7 +37,7 @@ app.get('/account',async (req,res)=>{
 
     db.end()
 })
-*/
+
 app.get('/login', async (req,res)=>{
     const password = req.query.password
     const email = req.query.email
@@ -46,8 +45,8 @@ app.get('/login', async (req,res)=>{
     db.query(`SELECT * FROM info WHERE password = "${password}" AND email = "${email}";`,(error,results,fields)=>{
         if(error)throw error
         //passing the result object into values to get the value
-        console.log(results)
-        if(results.length()>0){
+        
+        if(Object.keys(results).length > 0){
             console.log("logged in")
         }else{
             console.log("Incorrect Username and/or Password!")
