@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {useState} from "react";     //import this to get user input (forms)
 import "./Login.css";
 //login component
@@ -10,11 +11,11 @@ export const Login = (props) => {
     //referenced in value tag
 
     //passes the event
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();     //if we dont do this the page gets reloaded and we lose our state
         console.log(email);
-  
-
+        const res = await axios.get(`http://localhost:3000/login?email=${email}&password=${pass}`)
+        console.log(res)
     }
 
     return(
