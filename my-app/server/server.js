@@ -1,6 +1,7 @@
 import express from "express"
 import axios from "axios"
 import cors from "cors"
+import db from "../database/db.js"
 import "dotenv/config"
 
 const app = express()
@@ -18,4 +19,42 @@ app.get('/recipes/:query', async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`)
+})
+
+app.get('/Signup',async (req,res)=>{
+
+    const username = req.query.username
+    const password = req.query.password
+    const email = req.query.email
+    const name = req.query.name
+    console.log(req.query)
+    db.connect((err)=>{
+        if (err)
+        throw err
+        console.log("connected")
+    });
+    db.query(`INSERT INTO info (email, password, username, name) VALUES ("${email}","${password}" ,"${username}" ,"${name}");`
+    ,(error,results,fields)=>{
+        if(error)throw error
+        console.log(results)
+    }
+    );
+
+    db.end()
+})
+
+app.get('/Login', async (req,res)=>{
+    const password = req.query.password
+    const email = req.query.email
+
+    db.query(`SELECT * FROM info WHERE password = "${password}" AND email = "${email}";`,(error,results,fields)=>{
+        if(error)throw error
+        //passing the result object into values to get the value
+
+        if(Object.keys(results).length > 0){
+            console.log("logged in")
+        }else{
+            console.log("Incorrect Username and/or Password!")
+        }
+    })
 })

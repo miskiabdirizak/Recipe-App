@@ -1,5 +1,9 @@
 import React, {useState} from "react";     //import this to get user input (forms)
+import { Navigate } from "react-router-dom";
+import axios from "axios";
+//import Navbar from "./Nav"
 import "./Login.css";
+import Navbar from "./Nav";
 //login component
 //props let us send info to parent component
 export const Login = (props) => {
@@ -10,15 +14,19 @@ export const Login = (props) => {
     //referenced in value tag
 
     //passes the event
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();     //if we dont do this the page gets reloaded and we lose our state
         console.log(email);
-  
+        
+        const res = await 
+        axios.get(`http://localhost:3000/login?email=${email}&password=${pass}`)
+        console.log(res)
 
     }
 
     return(
-        <div className="login">
+        <div className="form">
+            <Navbar/>
             <div className="auth-form-container">
                 <h2>Login</h2>
                 <form className="login-form" onSubmit={handleSubmit}>
@@ -41,3 +49,4 @@ export const Login = (props) => {
         </div>
     )
 }
+export default Login
