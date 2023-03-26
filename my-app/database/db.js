@@ -4,7 +4,7 @@ var connection =
 mysql.createConnection({
     host        : 'localhost', 
     user        : 'root', 
-    password    : 'miski101', 
-    database    : 'recipe_app'
+    password    : 'password', 
+    database    : 'account'
 });
 export default connection
