@@ -2,16 +2,21 @@ import {Link} from "react-router-dom"
 import "./Search.css"
 const Navbar = ()=>{
     return(
+    <header className="box-shadow">
     <div className="navbar">
+        <ul className="ul">
         <li>
-        <Link to="/">Home</Link>
+        <Link to="/Login">Login</Link>
         </li>
         <li>
         <Link to="/Search">Recipe</Link>
         </li>
         <li>
-        <Link to="register">Login</Link>
+        <Link to="/Register">Register</Link>
         </li>
-    </div>)
+        </ul>
+    </div>
+    </header>
+    )
 } 
 export default Navbar;

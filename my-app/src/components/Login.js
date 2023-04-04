@@ -14,7 +14,7 @@ export const Login = (props) => {
     const handleSubmit = async (e) =>{
         e.preventDefault();     //if we dont do this the page gets reloaded and we lose our state
         console.log(email);
-        const res = await axios.get(`http://localhost:3000/login?email=${email}&password=${pass}`)
+        const res = await axios.get(`http://localhost:3001/login?email=${email}&password=${pass}`)
         console.log(res)
     }
 

@@ -5,7 +5,7 @@ import "dotenv/config"
 import db from "../Database/DB.js"
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 app.use(cors())
 

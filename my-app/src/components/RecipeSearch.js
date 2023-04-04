@@ -2,12 +2,13 @@
 //Holds all the pages that will be linked to the home page
 
 import React, { useEffect, useState } from "react";
-import Recipe from "./Recipe";
+import Recipe from "./Recipe.tsx";
 import axios from "axios";
 import "./Search.css";
 import fruit from "./fruit.png"
 import cuttingboard from "./cuttingboard.jpg"
 import Navbar from "./Nav"
+
 
 
 const Search = () => {
@@ -20,7 +21,7 @@ const Search = () => {
   }, [query]);
 
   const getRecipes = async () => {
-    const response = await axios.get(`http://localhost:3000/recipes/${query}`);
+    const response = await axios.get(`http://localhost:3001/recipes/${query}`);
     console.log(response.data);
     setRecipes(response.data);
   };
@@ -62,14 +63,16 @@ const Search = () => {
       </form>
         <h1 >Recipes</h1> 
         <ul className="cards">
-        {recipes.map((recipe) => (
+        {recipes.map((r) => (
+         
           <Recipe
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-            totalNutrients={recipe.recipe.totalNutrients}
-            calories={recipe.recipe.calories}
+            key={r.recipe.label}
+            title={r.recipe.label}
+            image={r.recipe.image}
+            ingredients={r.recipe.ingredients}
+            nut={r.recipe.totalNutrients}
+            calories={r.recipe.calories}
+            servings ={r.recipe.yield}
           />
         ))}
         </ul>
