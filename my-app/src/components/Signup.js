@@ -1,80 +1,58 @@
-import React, {useState,useEffect, setState} from 'react';
-import "./Search.css";
-import './Signup.css'
-import Navbar from "./Nav"
-
-//input validation regular expressions (https://regexr.com/)
-const EMAIL_REGEX = /^[A-z][A-z0-9@.]{8,23}$/;
-const FN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
-
-function Signup() {
-
-    const [firstName, setFirstName] = useState('');
-    const [validFirstName, setValidFirstName] = useState(false);
-    const [firstNameFocus, setFirstNameFocus] = useState(false);
-
-    const [lastName, setLastName] = useState('');
-    const [validLastName, setValidLastName] = useState(false);
-    const [lastNameFocus, setLastNameFocus] = useState(false);
-
-    const [email, setEmail] = useState('');
-    const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
-
-    const [password,setPassword] = useState('');
-    const [validPassword, setValidPassword] = useState(false);
-    const [passwordFocus, setPasswordFocus] = useState(false);
-
-    const [confirmPassword,setConfirmPassword] = useState('');
-    const [validConfirmPassword, setValidConfirmPassword] = useState(false);
-    const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
-
-    useEffect(() => {
-        setValidFirstName(FN_REGEX.test(firstName));
-    }, [firstName])
-
-    useEffect(() => {
-        setValidLastName(FN_REGEX.test(lastName));
-    }, [lastName])
-
-    useEffect(() => {
-        setValidPassword(PASSWORD_REGEX.test(password));
-    }, [password])
-
-    useEffect(() => {
-        setValidPassword(PASSWORD_REGEX.test(password));
-        setValidConfirmPassword(confirmPassword === password);
-    }, [password, confirmPassword])
-
-
-    const handleInputChange = (e) => {
-        const {id , value} = e.target;
-        if(id === "firstName"){
-            setFirstName(value);
-            setValidFirstName(FN_REGEX.test(value));
-        }
-        if(id === "lastName"){
-            setLastName(value);
-            setValidLastName(FN_REGEX.test(value));
-        }
-        if(id === "email"){
-            setEmail(value);
-            setValidEmail(EMAIL_REGEX.test(email));
-        }
-        if(id === "password"){
-            setPassword(value);
-            //alert("password Input Change");
-            setValidPassword(PASSWORD_REGEX.test(password));
-        }
-        if(id === "confirmPassword"){
-            setConfirmPassword(value);
-            setValidConfirmPassword(password === confirmPassword);
-        }
-
+import React, {useState} from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import {  createUserWithEmailAndPassword  } from 'firebase/auth';
+import { auth } from '../firebase';
+import Navbar from './Nav';
+const Signup = () => {
+    const navigate = useNavigate();
+ 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+ 
+    const onSubmit = async (e) => {
+      e.preventDefault()
+     
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/login")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            // ..
+        });
+ 
+   
     }
+ 
+  return (
+    <main >        
+        <section>
+            <div>
+                <div> 
+                    <Navbar/>                 
+                    <h1> Signup </h1>                                                                            
+                    <form>                                                                                            
+                        <div>
+                            <label htmlFor="email-address">
+                                Email address
+                            </label>
+                            <input
+                                type="email"
+                                label="Email address"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}  
+                                required                                    
+                                placeholder="Email address"                                
+                            />
+                        </div>
 
+<<<<<<< HEAD
     const handleSubmit = () =>{
         //alert('Submit handle');
         console.log(firstName,lastName,email,password,confirmPassword);
@@ -157,14 +135,42 @@ function Signup() {
                     <p id="confirmnote" className={confirmPasswordFocus && !validConfirmPassword ? "instructions" : "offscreen"}>
                         - Must match the Password input field.
                     </p>
+=======
+                        <div>
+                            <label htmlFor="password">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                label="Create password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)} 
+                                required                                 
+                                placeholder="Password"              
+                            />
+                        </div>                                             
+                        
+                        <button
+                            type="submit" 
+                            onClick={onSubmit}                        
+                        >  
+                            Sign up                                
+                        </button>
+                                                                     
+                    </form>
+                   
+                    <p>
+                        Already have an account?{' '}
+                        <NavLink to="/Login" >
+                            Sign in
+                        </NavLink>
+                    </p>                   
+>>>>>>> 6870f33 (added firebase authentication)
                 </div>
             </div>
-            <div class="footer">
-                <button disabled={!validFirstName || !validLastName || !validPassword || !validConfirmPassword ? true : false} onClick={()=>handleSubmit()} type="submit" class="btn">Register</button>
-            </div>
-        </div>
-
-    )
+        </section>
+    </main>
+  )
 }
-
+ 
 export default Signup
