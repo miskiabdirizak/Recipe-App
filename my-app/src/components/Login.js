@@ -1,7 +1,6 @@
 import React, {useState} from "react";     //import this to get user input (forms)
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-//import Navbar from "./Nav"
 import "./Login.css";
 import Navbar from "./Nav";
 //login component
@@ -19,14 +18,15 @@ export const Login = (props) => {
         console.log(email);
         
         const res = await 
-        axios.get(`http://localhost:3000/login?email=${email}&password=${pass}`)
+        axios.get(`http://localhost:3001/login?email=${email}&password=${pass}`)
         console.log(res)
 
     }
 
     return(
-        <div className="form">
-            <Navbar/>
+        <div>
+        <Navbar/>
+        <div className="login">
             <div className="auth-form-container">
                 <h2>Login</h2>
                 <form className="login-form" onSubmit={handleSubmit}>
@@ -46,6 +46,7 @@ export const Login = (props) => {
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
             
             </div>
+        </div>
         </div>
     )
 }

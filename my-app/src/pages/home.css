@@ -1,0 +1,13 @@
+.content{
+    position:absolute;
+    margin:auto;
+    left: 20%;
+    top:50%;
+    color:white;
+    font-size: 20px;
+    background:gray;
+   align-items: center;
+}
+.homeimg{
+    opacity:70%;
+}

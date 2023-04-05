@@ -1,8 +1,9 @@
 import React, {useState,useEffect, setState} from 'react';
-import "./Search.css";
+
 import './Signup.css'
 import Navbar from "./Nav"
-
+import axios from "axios"
+import Footer from './Footer';
 //input validation regular expressions (https://regexr.com/)
 const EMAIL_REGEX = /^[A-z][A-z0-9@.]{8,23}$/;
 const FN_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -50,6 +51,7 @@ function Signup() {
 
 
     const handleInputChange = (e) => {
+        e.preventDefault();
         const {id , value} = e.target;
         if(id === "firstName"){
             setFirstName(value);
@@ -75,8 +77,9 @@ function Signup() {
 
     }
 
-    const handleSubmit = () =>{
+    const handleSubmit = (e) =>{
         //alert('Submit handle');
+        e.preventDefault();
         console.log(firstName,lastName,email,password,confirmPassword);
         //We validated input as user entered, but to prevent direct submition sto backend.
         //const userValid = FN_REGEX.test(firstName);
@@ -94,6 +97,7 @@ function Signup() {
             password:password,
             confirmPassword:confirmPassword,
         }
+        axios.get(`http://localhost:3001/Signup?firstName=${firstName}&lastName=${lastName}&email=${email}&password=${password}`)
 
         //clear fields
         setFirstName('');
@@ -106,9 +110,12 @@ function Signup() {
 
 
     return(
+        
+        <form onSubmit={handleSubmit}>
+        <Navbar />
         <div className="form">
-            <Navbar />
             <div className="form-body">
+        <h2>Signup</h2>
                 <div className="username">
                     <label className="form__label" for="firstName">First Name </label>
                     <input className="form__input" type="text" value={firstName} onBlur={() => setFirstNameFocus(false)} onFocus={() => setFirstNameFocus(true)} onChange = {(e) => handleInputChange(e)} id="firstName" placeholder="First Name"/>
@@ -160,10 +167,11 @@ function Signup() {
                 </div>
             </div>
             <div class="footer">
-                <button disabled={!validFirstName || !validLastName || !validPassword || !validConfirmPassword ? true : false} onClick={()=>handleSubmit()} type="submit" class="btn">Register</button>
+                <button disabled={!validFirstName || !validLastName || !validPassword || !validConfirmPassword ? true : false}  type="submit" class="btn">Register</button>
             </div>
         </div>
-
+        </form>
+      
     )
 }
 
