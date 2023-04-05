@@ -1,0 +1,43 @@
+h1 {
+    text-align: left;
+    padding: 30px 30px;
+    color: aliceblue;
+  }
+  body {
+    background-color: #74bfe1;
+  }
+  #Ingredient-list {
+    width: 100px;
+    margin: 50px;
+  }
+  form,.Ingredient {
+    padding: 20px 30px;
+  }
+  form {
+    justify-content: space-between;
+  }
+  form input {
+    margin-right: 50px;
+  }
+  button {
+    font-size: 15px;
+    background-color: lightblue;
+    color: #6161e3;
+    border-radius: 15px;
+    padding: 10px 15px;
+  
+  }
+  input[type='text'] { font-size: 25px; color: blue; font-family: monospace; }
+  .todo-text input {
+    padding: 5px;
+  }
+  .Ingredient-text {
+    font-size: 20px;
+    line-height: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    color: navy;
+  }
+  .todo-actions {
+    justify-content: space-between;
+  }

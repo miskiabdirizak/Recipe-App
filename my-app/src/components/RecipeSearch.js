@@ -1,7 +1,7 @@
 //Render out home page here => needed for routing b/c its a big file 
 //Holds all the pages that will be linked to the home page
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Link} from "react";
 import Recipe from "./Recipe";
 import axios from "axios";
 import "./Search.css";
@@ -39,6 +39,7 @@ const Search = () => {
     <div className="App">
 
         <Navbar />
+        
       <div className="bottom">
         <h2>Recipe Bar</h2>
         <img src={fruit} width="50px" height="50px"></img>

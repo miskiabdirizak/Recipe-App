@@ -13,6 +13,7 @@ function Pages() {
     <Container className = "d-flex align-items-center-justify-content-center"
     Style = {{minHeight:"100vh"}}>
       <div className='w-100' style = {{ maxWidth: "400px"}}/>
+        <Home/>
         <Search />
         <Login />
         <Signup/>

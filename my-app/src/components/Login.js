@@ -15,7 +15,7 @@ const Login = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            navigate("/search")
+            navigate("/Search")
             console.log(user);
         })
         .catch((error) => {
@@ -27,32 +27,12 @@ const Login = () => {
     }
  
     return(
-<<<<<<< HEAD
-        <div className="login">
-            
-            <div className="auth-form-container">
-            <Navbar/>
-                <h2>Login</h2>
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <label htmlFor="email">email</label>
-                    <input 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        type="email" placeholder="youremail@gmail.com"
-                        id="email" 
-                        name = "email"
-                    />
-                    <label htmlFor="password">password</label>
-                    <input value={pass} onChange={(e) => setPass(e.target.value)}  type="password" placeholder="*******" id="password" name = "password"/>
-                    <button type="submit"> Log In</button>
-=======
         <>
             <main >        
                 <section>
-                    
-                    <div>        
-                    <Navbar/>                                    
-                        <p> Login </p>                       
+                    <div>    
+                        <Navbar/>                                        
+                        <h2> Log In </h2>                       
                                                        
                         <form>                                              
                             <div>
@@ -68,7 +48,6 @@ const Login = () => {
                                     onChange={(e)=>setEmail(e.target.value)}
                                 />
                             </div>
->>>>>>> 6870f33 (added firebase authentication)
 
                             <div>
                                 <label htmlFor="password">
@@ -93,7 +72,7 @@ const Login = () => {
                             </div>                               
                         </form>
                        
-                        <p className="text-sm text-black text-center">
+                        <p className="text-sm text-white text-center">
                             No account yet? {' '}
                             <NavLink to="/Signup">
                                 Sign up

@@ -4,7 +4,7 @@ const Navbar = ()=>{
     return(
     <div className="navbar">
         <li>
-        <Link to="/">Home</Link>
+        <Link to="/Home">Home</Link>
         </li>
         <li>
         <Link to="/Search">Recipe</Link>
@@ -18,6 +18,8 @@ const Navbar = ()=>{
         <li> 
          <Link to = "/DietProfile">Diet</Link>   
         </li>
+        <li>
+         <Link to = "/EditIngredients">EditIngredients</Link></li>
     </div>)
 } 
 export default Navbar;

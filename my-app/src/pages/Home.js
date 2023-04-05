@@ -1,8 +1,10 @@
 //Add home page Components
 import Navbar from "../components/Nav"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Link } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
+import Login from "../components/Login";
+import { useNavigate } from "react-router-dom";
  
 const Home = () => {
  
@@ -22,11 +24,20 @@ const Home = () => {
           });
          
     }, [])
+
+    let navigate = useNavigate();
+    const routeChange = () => {
+      let path = '/Login';
+      navigate(path);
+    }
  
   return (
-    <section>        
-      <Navbar/>
-    </section>
+    <>
+    <button onClick={routeChange}>
+      Log in
+    </button>
+    <Navbar />
+    </>
   )
 }
  
