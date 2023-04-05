@@ -15,6 +15,9 @@ const Navbar = ()=>{
         <li> 
          <Link to = "/Signup">Signup</Link>   
         </li>
+        <li> 
+         <Link to = "/DietProfile">Diet</Link>   
+        </li>
     </div>)
 } 
 export default Navbar;

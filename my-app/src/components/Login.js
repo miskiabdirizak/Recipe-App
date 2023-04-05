@@ -25,9 +25,10 @@ export const Login = (props) => {
     }
 
     return(
-        <div className="form">
-            <Navbar/>
+        <div className="login">
+            
             <div className="auth-form-container">
+            <Navbar/>
                 <h2>Login</h2>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <label htmlFor="email">email</label>

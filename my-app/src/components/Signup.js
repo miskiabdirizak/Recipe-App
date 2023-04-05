@@ -107,8 +107,8 @@ function Signup() {
 
     return(
         <div className="form">
-            <Navbar />
             <div className="form-body">
+            <Navbar />
                 <div className="username">
                     <label className="form__label" for="firstName">First Name </label>
                     <input className="form__input" type="text" value={firstName} onBlur={() => setFirstNameFocus(false)} onFocus={() => setFirstNameFocus(true)} onChange = {(e) => handleInputChange(e)} id="firstName" placeholder="First Name"/>

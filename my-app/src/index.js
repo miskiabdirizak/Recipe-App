@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import Search from './components/RecipeSearch';
 import Login  from './components/Login';
 import Signup from './components/Signup';
+import DietProfile from './DietProfile';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,6 +19,7 @@ root.render(
       <Route path="/Search" element ={<Search />} />
       <Route path="/Login" element ={<Login />} />
       <Route path="/Signup" element ={<Signup />} />
+      <Route path='/DietProfile' element = {<DietProfile/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
