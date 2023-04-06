@@ -13,9 +13,6 @@ const Navbar = ()=>{
         <li>
         <Link to="/Login">Login</Link>
         </li>
-        <li> 
-         <Link to = "/Signup">Signup</Link>   
-        </li>
         <li>
         <Link to = "/Favorites">Favorites</Link>
         </li>
