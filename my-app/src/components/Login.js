@@ -1,89 +1,43 @@
-import React, {useState} from 'react';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../firebase';
-import { NavLink, useNavigate } from 'react-router-dom'
-import Navbar from './Nav';
- 
-const Login = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-       
-    const onLogin = (e) => {
-        e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            navigate("/Search")
-            console.log(user);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        });
-       
-    }
- 
-    return(
-        <>
-            <main >        
-                <section>
-                    <div>    
-                        <Navbar/>                                        
-                        <h2> Log In </h2>                       
-                                                       
-                        <form>                                              
-                            <div>
-                                <label htmlFor="email-address">
-                                    Email address
-                                </label>
-                                <input
-                                    id="email-address"
-                                    name="email"
-                                    type="email"                                    
-                                    required                                                                                
-                                    placeholder="Email address"
-                                    onChange={(e)=>setEmail(e.target.value)}
-                                />
-                            </div>
+import React, {useState} from "react";     //import this to get user input (forms)
+import "./Login.css";
+//login component
+//props let us send info to parent component
+export const Login = (props) => {
 
-                            <div>
-                                <label htmlFor="password">
-                                    Password
-                                </label>
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"                                    
-                                    required                                                                                
-                                    placeholder="Password"
-                                    onChange={(e)=>setPassword(e.target.value)}
-                                />
-                            </div>
-                                                
-                            <div>
-                                <button                                    
-                                    onClick={onLogin}                                        
-                                >      
-                                    Login                                                                  
-                                </button>
-                            </div>                               
-                        </form>
-                       
-                        <p className="text-sm text-white text-center">
-                            No account yet? {' '}
-                            <NavLink to="/Signup">
-                                Sign up
-                            </NavLink>
-                        </p>
-                                                   
-                    </div>
-                </section>
-            </main>
-        </>
+    //creates a state with a name and function that modifies it, initial value is empty
+    const[email, setEmail] = useState('');
+    const[pass, setPass] = useState('');
+    //referenced in value tag
+
+    //passes the event
+    const handleSubmit = (e) =>{
+        e.preventDefault();     //if we dont do this the page gets reloaded and we lose our state
+        console.log(email);
+  
+
+    }
+
+    return(
+        <div className="login">
+            <div className="auth-form-container">
+                <h2>Login</h2>
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <label htmlFor="email">email</label>
+                    <input 
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        type="email" placeholder="youremail@gmail.com"
+                        id="email" 
+                        name = "email"
+                    />
+                    <label htmlFor="password">password</label>
+                    <input value={pass} onChange={(e) => setPass(e.target.value)}  type="password" placeholder="*******" id="password" name = "password"/>
+                    <button type="submit"> Log In</button>
+
+                </form>
+                <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+            
+            </div>
+        </div>
     )
 }
- 
-export default Login
