@@ -28,62 +28,35 @@ const Login = () => {
     }
  
     return(
-        <>
-            <main >        
-                <section>
-                    <div>    
-                        
-                        <h2> Log In </h2>                       
+   
+   <div>
+   <Navbar/>
+   <div className="login">
+       <div className="auth-form-container">
+           <h2>Login</h2>
+           <form className="login-form" onSubmit={onLogin}>
+               <label htmlFor="email">Email Address</label>
+               <input 
+                   value={email} 
+                   onChange={(e) => setEmail(e.target.value)} 
+                   type="email" placeholder="youremail@gmail.com"
+                   id="email" 
+                   name = "email"
+               />
+               <label htmlFor="password">Password</label>
+               <input value={password} onChange={(e) => setPassword(e.target.value)}  type="password" placeholder="*******" id="password" name = "password"/>
+               <button type="submit"> Log In</button>
 
-                        <form>                                              
-                            <div>
-                                <label htmlFor="email-address">
-                                    Email address
-                                </label>
-                                <input
-                                    id="email-address"
-                                    name="email"
-                                    type="email"                                    
-                                    required                                                                                
-                                    placeholder="Email address"
-                                    onChange={(e)=>setEmail(e.target.value)}
-                                />
-                            </div>
-
-                            <div>
-                                <label htmlFor="password">
-                                    Password
-                                </label>
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"                                    
-                                    required                                                                                
-                                    placeholder="Password"
-                                    onChange={(e)=>setPassword(e.target.value)}
-                                />
-                            </div>
-
-                            <div>
-                                <button                                    
-                                    onClick={onLogin}                                        
-                                >      
-                                    Login                                                                  
-                                </button>
-                            </div>                               
-                        </form>
-
-                        <p>
-                            No account yet? {' '}
-                            <NavLink to="/Signup">
-                                Sign up
-                            </NavLink>
-                        </p>
-
-                    </div>
-                </section>
-            </main>
-        </>
+           </form>
+           <p>
+            No account yet? {' '}
+            <NavLink to="/Signup">
+                Sign up
+            </NavLink>
+            </p>
+</div>
+   </div>
+   </div>
     )
 }
 

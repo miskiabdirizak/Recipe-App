@@ -1,12 +1,11 @@
 h1 {
     text-align: left;
     padding: 30px 30px;
-    color: aliceblue;
+    
   }
-  body {
-    background-color: #74bfe1;
+  #todo-list{
+    background-color: rgb(195, 227, 255);
   }
-
   #Ingredient-list {
     width: 100px;
     margin: 50px;

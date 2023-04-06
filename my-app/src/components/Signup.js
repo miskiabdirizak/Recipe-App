@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { auth } from '../firebase';
-import './Signup.css'
+import Navbar from './Nav';
+import './Login.css'
  
 const Signup = () => {
     const navigate = useNavigate();
@@ -32,20 +33,21 @@ const Signup = () => {
     }
  
   return (
-    <main >        
-        <section >
-            <div className="flex h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
-                <div className="w-full max-w-md space-y-8">  
-                    <div> 
-                        <h1> Sign up </h1>
+    <div >      
+        <Navbar/>  
+        
+            <div className="login">
+                <div className="auth-form-container">  
+                  
+                        <h2> Sign up </h2>
                         <h3 className="text-white text-center text-base  tracking-tight text-gray-900">
                          Welcome, New User
                         </h3>   
-                    </div>                
+                               
                                                                                                  
-                    <form className="mt-8 space-y-6">                                                                                            
-                        <div className=" space-y-6 rounded-md shadow-sm">
-                            <div>
+                    <form className="login-form">                                                                                            
+                       
+                            
                             <label htmlFor="email-address" className="sr-only">
                                 Email address
                             </label>
@@ -57,8 +59,8 @@ const Signup = () => {
                                 required
                                 placeholder="Email address"                                
                             />
-                            </div>
-                            <div>
+                           
+                           
                                 <label htmlFor="password" className="sr-only">
                                     Password
                                 </label>
@@ -70,18 +72,14 @@ const Signup = () => {
                                     required 
                                     placeholder="Password"              
                                 />
-                            </div>                  
-                            
-                        </div>
-                 
-                        <div>
+                                         
                             <button
                                 type="submit" 
                                 onClick={onSubmit} 
                                                      
                             >Sign up                                
                             </button>
-                        </div>
+                       
                         
                                                                      
                     </form>
@@ -94,8 +92,8 @@ const Signup = () => {
                     </p>                   
                 </div>
             </div>
-        </section>
-    </main>
+        
+    </div>
   )
 }
  

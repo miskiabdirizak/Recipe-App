@@ -1,28 +1,31 @@
-.login{
-  text-align: center;
-  display: flex;
-  min-height:100vh;
-  align-items: center;
-  justify-content: center;
-  color:white;
 
-  background-image: linear-gradient(79deg, #5cce32, #78c78d7c, #74bfe1)
-}
-body {
-  color: black;
+.login {
+  text-align: center;
+  justify-content: center;
+  display:flex;
+  align-items: center;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border:solid black 1px;
+  border-radius: 20%;
+  width:400px;
   background-color: white;
 }
 
-main {
-  max-width: 1200px;
-  margin: 0 auto;
+
+.auth-form-container, .login-form, .register-form{
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and(min-width: 600px)
 {
   .auth-form-container{
     padding: 5rem;  
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid white;
     border-radius: 10px;
     margin: 0.5rem;
   }
@@ -39,7 +42,6 @@ input{
   padding: 1rem;
   border: none;
   border-radius: 10px;
-  border-color: blue;
 }
 
 button{
@@ -48,6 +50,13 @@ button{
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
+}
+button:active{
+  animation:fade 2s;
+}
+@keyframes fade {
+  0% { background-color: rgb(187, 172, 255); }
+100% { background-color: white; }
 }
 
 .link-btn{

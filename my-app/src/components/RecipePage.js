@@ -41,12 +41,13 @@ const RecipePage = (val)=>{
             <div>
                 <span class="material-icons material-symbols-outlined">schedule</span> 
                <span>PREP TIME</span>
-               <p>{r.totalTime} mins</p>
+          {r.totalTime==0?<p>less than a min</p>:<p>{r.totalTime} mins </p> } 
             </div>
             <div>
                 <span class="material-icons material-symbols-outlined">schedule</span> 
                <span>COOK TIME</span>
-               <p>{r.totalTime} mins</p>
+               {r.totalTime==0?<p>less than a min</p>:<p>{r.totalTime} mins </p> } 
+          
             </div>
 
            </aside>
