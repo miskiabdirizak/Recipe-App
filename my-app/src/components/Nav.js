@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom"
 import "./Search.css"
+import "./Nav.css"
 const Navbar = ()=>{
     return(
-    <div className="navbar">
+    <ul className="navbar">
         <li>
         <Link to="/Home">Home</Link>
         </li>
@@ -15,11 +16,14 @@ const Navbar = ()=>{
         <li> 
          <Link to = "/Signup">Signup</Link>   
         </li>
+        <li>
+        <Link to = "/Favorites">Favorites</Link>
+        </li>
         <li> 
          <Link to = "/DietProfile">Diet</Link>   
         </li>
         <li>
-         <Link to = "/EditIngredients">EditIngredients</Link></li>
-    </div>)
+         <Link to = "/EditIngredients">Add Ingredients</Link></li>
+    </ul>)
 } 
 export default Navbar;

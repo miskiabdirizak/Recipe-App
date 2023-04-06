@@ -1,13 +1,12 @@
-//Render out home page here => needed for routing b/c its a big file 
-//Holds all the pages that will be linked to the home page
-
-import React, { useEffect, useState, Link} from "react";
-import Recipe from "./Recipe";
+import React, { useEffect, useState } from "react";
+import Recipe from "./Recipe.tsx";
 import axios from "axios";
 import "./Search.css";
 import fruit from "./fruit.png"
-import cuttingboard from "./cuttingboard.jpg"
 import Navbar from "./Nav"
+import { Divider } from '@mui/material';
+import { Link } from "react-router-dom";
+
 
 
 const Search = () => {
@@ -38,8 +37,7 @@ const Search = () => {
   return (
     <div className="App">
 
-        <Navbar />
-        
+      <Navbar />
       <div className="bottom">
         <h2>Recipe Bar</h2>
         <img src={fruit} width="50px" height="50px"></img>
@@ -63,15 +61,22 @@ const Search = () => {
       </form>
         <h1 >Recipes</h1> 
         <ul className="cards">
-        {recipes.map((recipe) => (
-          <Recipe
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-            totalNutrients={recipe.recipe.totalNutrients}
-            calories={recipe.recipe.calories}
-          />
+        {recipes.map((r) => (
+          // this link will pull up additional recipe info on a seperate page
+          
+            <Recipe
+              key={r.recipe.label}
+              title={r.recipe.label}
+              image={r.recipe.image}
+              ingredients={r.recipe.ingredients}
+              nut={r.recipe.totalNutrients}
+              calories={r.recipe.calories}
+              servings={r.recipe.yield}
+              recipe = {r}
+            />
+
+      
+   
         ))}
         </ul>
       </div>

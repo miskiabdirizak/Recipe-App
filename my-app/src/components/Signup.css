@@ -48,26 +48,3 @@ body{
     position: absolute;
     left: -9999px;
 }
-
-.navbar{
-    width:100%;
-}
-.navbar a{
-    top:20px;
-    padding:20px;
-    word-spacing: 5px;
-    list-style: none;
-    text-decoration: none;
-    color:black;
-    background-color: gray;
-    font-family: 'Almarai', sans-serif;
-    font-size: 20px;
-
-}
-.navbar li{
-    display: inline;
-}
-
-.navbar a:hover{
-    background-color: rgb(65, 64, 64);
-}

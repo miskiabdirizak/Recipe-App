@@ -1,31 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Blinker&display=swap');
-
 .App{
   min-height: 100vh;
- 
-}
-.navbar{
-  width:100%;
-}
-.navbar a{
-  top:20px;
-  padding:20px;
-  word-spacing: 5px;
-  list-style: none;
-  text-decoration: none;
-  color:black;
-  background-color: gray;
-  font-family: 'Almarai', sans-serif;
-  font-size: 20px;
 
 }
-.navbar li{
-  display: inline;
-}
 
-.navbar a:hover{
-  background-color: rgb(65, 64, 64);
-}
 h1{
   height: fit-content;
   text-align: center;
@@ -52,15 +30,17 @@ h1{
 }
 
 .cards {
+  box-shadow: rgb(114, 114, 114) 5px 5px;
   display: grid;
   flex-wrap: wrap;
   list-style: none;
-  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin: auto;
   width: 60%;
   padding: 10px;
-  
+  border:solid rgb(114, 114, 114) 1px;
+
 }
 
 .cards_item {

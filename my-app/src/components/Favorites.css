@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Blinker&display=swap');
+
+.App{
+  min-height: 100vh;
+ 
+}
+.headbox{
+    border: 5px solid rgb(128, 128, 128);
+    background-color: rgb(181, 246, 157);
+    width:fit-content;
+    box-shadow: 5px 5px  rgb(88, 88, 88);
+    color:black;margin: auto;
+    width: 60%;
+    padding: 10px;
+  }
+
+  .bottom{
+
+    font-size: 20px;
+    
+    text-align:center;
+    color: rgb(101, 90, 112);
+    
+    background-color: aquamarine;
+  
+  }

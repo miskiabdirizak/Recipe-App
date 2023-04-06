@@ -1,5 +1,7 @@
 import React from "react";
 import "./EditIngredients.css";
+import Navbar from "./Nav";
+
 const EditIngredients = () => {
   const [Ingredients, setIngredients] = React.useState([]);
   const [Ingredient, setIngredient] = React.useState("");
@@ -28,6 +30,7 @@ const EditIngredients = () => {
   }
   return (
       <div id="todo-list">
+        <Navbar/>
         <h1>Ingredients List</h1>
         <form onSubmit={handleSubmit}>
           <input

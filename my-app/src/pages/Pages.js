@@ -2,7 +2,7 @@ import React from 'react'
 import Home from './Home'
 import Search from '../components/RecipeSearch'
 import Navbar from "../components/Nav"
-import Recipe from '../components/Recipe'
+import Recipe from '../components/Recipe.tsx'
 import Login  from '../components/Login'
 import { Container } from 'react-bootstrap'
 import Signup from '../components/Signup'

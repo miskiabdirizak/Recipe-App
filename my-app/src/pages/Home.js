@@ -1,44 +1,24 @@
-//Add home page Components
 import Navbar from "../components/Nav"
-import React, { useState, useEffect, Link } from 'react';
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from '../firebase';
-import Login from "../components/Login";
-import { useNavigate } from "react-router-dom";
- 
-const Home = () => {
- 
-    useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
-              const uid = user.uid;
-              // ...
-              console.log("uid", uid)
-            } else {
-              // User is signed out
-              // ...
-              console.log("user is logged out")
-            }
-          });
-         
-    }, [])
+import cuttingboard from "../components/cuttingboard.jpg"
+import "./home.css"
+import CardComponent from "../components/Cards"
+import Footer from "../components/Footer"
+import React from 'react'
 
-    let navigate = useNavigate();
-    const routeChange = () => {
-      let path = '/Login';
-      navigate(path);
-    }
- 
+function Home() {
   return (
-    <>
-    <button onClick={routeChange}>
-      Log in
-    </button>
-    <Navbar />
-    </>
+    <div class="page__grid" role="grid">
+        <Navbar />
+        <CardComponent />
+        <img class = "homeimg" src={cuttingboard} width="100%" ></img>
+        <div class="content">
+       
+            <h1>Find Your Recipe</h1>
+            <p>By using our website you can search for many delicious recipes. Begin using our health planner so we can personalize your searches for you.</p>
+        </div>
+        <Footer />
+    </div>
   )
 }
- 
+
 export default Home
