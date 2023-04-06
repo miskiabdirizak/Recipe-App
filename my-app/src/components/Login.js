@@ -3,6 +3,7 @@ import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import Navbar from './Nav';
+import './Login.css'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Login = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            navigate("/Search")
+            navigate("/Home")
             console.log(user);
         })
         .catch((error) => {
@@ -31,7 +32,7 @@ const Login = () => {
             <main >        
                 <section>
                     <div>    
-                        <Navbar/>                                        
+                        
                         <h2> Log In </h2>                       
 
                         <form>                                              
@@ -72,7 +73,7 @@ const Login = () => {
                             </div>                               
                         </form>
 
-                        <p className="text-sm text-white text-center">
+                        <p>
                             No account yet? {' '}
                             <NavLink to="/Signup">
                                 Sign up
