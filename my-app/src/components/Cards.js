@@ -30,13 +30,6 @@ const CardComponent = ()=>{
         const Text1 =["Weight Loss","Eat Healthier","Try any food"]
         const Text3 =["Keto","Vegan","Vegetarian" ,"any"]
 
-    useEffect(()=>{
-        console.log(choice1)
-        console.log(goal)
-        console.log(weight)
-        console.log(diet)
-        console.log(choice3)
-    })
     const submit = ()=>{
         setGoal(Text1[choice1])
         setDiet(Text3[choice3])
@@ -182,10 +175,10 @@ const CardComponent = ()=>{
     }
 return(
     <div>
-        <form onSubmit={submit}>
+
         {   currSet(next) }
         
-        </form>
+
     </div>
 )
 }

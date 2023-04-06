@@ -3,8 +3,7 @@
   min-height: 100vh;
 
 }
-
-h1{
+.title{
   height: fit-content;
   text-align: center;
 }

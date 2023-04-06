@@ -59,7 +59,7 @@ const Search = () => {
           Search
         </button>
       </form>
-        <h1 >Recipes</h1> 
+        <h1 className="title">Recipes</h1> 
         <ul className="cards">
         {recipes.map((r) => (
           // this link will pull up additional recipe info on a seperate page

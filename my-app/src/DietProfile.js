@@ -95,13 +95,12 @@ const DietProfile = () => {
 
   return (
     <div className="Diet">
+      <Navbar />
       <AppBar />
       {openModal? <AppModal setOpenModal={setOpenModal}/> : ""}
       <AppControlsCounter total ={total}/>
       <AppControlsDelete deleteAllMeals={deleteAllMeals} />
-      <div className='dietary_navbar'> 
-        <Navbar />
-      </div>
+
       <AppControlsInput addMealsHandler = {addMealsHandler} mealName={mealName} calories = {calories}
           setMealName={setMealName} setCalories={setCalories} />
 

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom"
 import "./Search.css"
 import "./Nav.css"
+import { Divider } from "@mui/material"
 const Navbar = ()=>{
     return(
     <ul className="navbar">
@@ -13,14 +14,15 @@ const Navbar = ()=>{
         <li>
         <Link to="/Login">Login</Link>
         </li>
-        <li>
-        <Link to = "/Favorites">Favorites</Link>
-        </li>
         <li> 
          <Link to = "/DietProfile">Diet</Link>   
         </li>
         <li>
-         <Link to = "/EditIngredients">Add Ingredients</Link></li>
+         <Link to = "/EditIngredients">Add Ingredients</Link>
+         </li>
+         <li>
+         <Link to = "/Favorites">Favorites</Link>
+         </li>
     </ul>)
 } 
 export default Navbar;
