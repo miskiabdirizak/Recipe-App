@@ -10,14 +10,14 @@ import { getDatabase} from "firebase/database"
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const app =firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN ,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  apiKey: "AIzaSyBn0B9fK-MSU0KiZjjGo-OkxAOpJ1yQUUc",
+  authDomain: "recipe-app-1b4a0.firebaseapp.com",
+  databaseURL: "https://recipe-app-1b4a0-default-rtdb.firebaseio.com/",
+  projectId: "recipe-app-1b4a0",
+  storageBucket: "recipe-app-1b4a0.appspot.com",
+  messagingSenderId: "408386340600",
+  appId: "1:408386340600:web:502437397ae9f74852dd0d",
+  measurementId: "G-HDYRJW8JEH"
 })
 
 // Initialize Firebase
