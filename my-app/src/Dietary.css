@@ -4,6 +4,8 @@
     width: 100%;
     background: #d7e9def4;
     overflow: hidden;
+    overflow-y: scroll;
+
   }
   
   .app_navbar{
@@ -107,6 +109,10 @@
     font-size: 18px;
     font-weight: 800;
     border-radius: 5px;
+  }
+
+  .Check{
+    accent-color: rgb(142, 226, 135);
   }
   
   .btn_delete_meal{

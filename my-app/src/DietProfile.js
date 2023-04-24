@@ -9,6 +9,10 @@ import AppMealsList from './components/DietaryProfile/AppMealsList/AppMealsList'
 import AppModal from './components/DietaryProfile/AppModal/AppModal';
 import AppMealsFilter from './components/DietaryProfile/AppMealsFilter/AppMealsFilter';
 
+import ExerciseControlsInput from './components/DietaryProfile/AppControls/ExerciseControlsInput'
+import AppExerciseList from './components/DietaryProfile/AppMealsList/AppExerciseList';
+
+
 import Navbar from './components/Nav';
 
 //conver the function into a const arrow function
@@ -18,6 +22,35 @@ const DietProfile = () => {
   const[calories, setCalories] = useState(0);
   const[openModal, setOpenModal] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("");
+
+  const[exercises, setExercises] = useState([]);
+  const[exerciseName, setexerciseName] = useState("");
+  const[caloriesBurned, setCaloriesBurned] = useState(0);
+
+  const addExerciseHandler = () =>{
+    const oldEx = exercises ? [...exercises] : [];
+    const exercise = {
+      exerciseName,
+      caloriesBurned,
+      id: Math.floor(Math.random() * 1000), 
+    };
+
+    const newEx = oldEx.concat(exercise);
+    setExercises(newEx);
+    localStorage.setItem("exercises", JSON.stringify(newEx)); 
+
+    setexerciseName("");
+    setCaloriesBurned(0);
+  }
+
+  const deleteExerciseHandler = (id) =>{
+    const oldEx= [...exercises];
+
+    const newEx = oldEx.filter((exercise) => exercise.id !== id);   //filter out the meals with that id, so it would delete it
+    
+    setExercises(newEx);
+    localStorage.setItem("exercises", JSON.stringify(newEx)); 
+  }
 
   const addMealsHandler = () =>{
     //console.log(mealName);
@@ -61,15 +94,17 @@ const DietProfile = () => {
 
   const deleteAllMeals = () =>{
     setMeals([]);
+    setExercises([]);
     localStorage.clear(); //clears all the data from local storage
   }
 
   //map will map the array to this const, specifically just the calories
   //reduce will add up all the numbers, the accumulate plus each value. Extra plus because value is a number. 0 for initial
-  const total = 
-        meals !== null 
-        ? meals.map((meal)=>meal.calories).reduce((acc, value)=>acc + +value, 0)
-        : 0;  //same thing here to check for null. If not null do this else 0 
+  const exTotal =
+  exercises != null
+  ? Number(meals.map((meal)=>meal.calories).reduce((acc, value)=>acc + +value, 0))
+    -   Number(exercises.map((exercise)=>exercise.caloriesBurned).reduce((acc, value)=>acc + + value, 0)) 
+  : 0;
 
   //this is to sort the meals, find out what use effect does
   useEffect(()=>{
@@ -91,6 +126,13 @@ const DietProfile = () => {
     setMeals(localStorageMeals);
   }, [setMeals]);    //setMeals as dependecy
 
+  
+  useEffect(()=>{
+    //convert the local storage data back into a const and set the meals to it. This way it stays on reload
+    const localStorageEx= JSON.parse(localStorage.getItem('exercises'));
+    setExercises(localStorageEx);
+  }, [setExercises]);    //setMeals as dependecy
+
   // {openModal? <AppModal setOpenModal={setOpenModal}/> : ""}    //if openModal is true use first argument else use second
 
   return (
@@ -98,7 +140,7 @@ const DietProfile = () => {
       <Navbar />
       <AppBar />
       {openModal? <AppModal setOpenModal={setOpenModal}/> : ""}
-      <AppControlsCounter total ={total}/>
+      <AppControlsCounter total ={exTotal}/>
       <AppControlsDelete deleteAllMeals={deleteAllMeals} />
 
       <AppControlsInput addMealsHandler = {addMealsHandler} mealName={mealName} calories = {calories}
@@ -107,6 +149,9 @@ const DietProfile = () => {
       <div className='app_meals_container'>
         <AppMealsFilter selectedFilter ={selectedFilter} setSelectedFilter = {setSelectedFilter}/>
         <AppMealsList meals={meals} deleteMealHandler={deleteMealHandler}/>
+        <ExerciseControlsInput addExerciseHandler={addExerciseHandler} exerciseName={exerciseName} caloriesBurned={caloriesBurned}
+          setCaloriesBurned={setCaloriesBurned} setexerciseName={setexerciseName}/>
+        <AppExerciseList exercises={exercises} deleteExerciseHandler={deleteExerciseHandler}/>
       </div>
     </div>
   );
