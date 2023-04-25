@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import Navbar from './Nav'
 import { Nav } from 'react-bootstrap'
-import "./planner.css"
+import "./Planner.css"
+import { getDatabase,ref,set } from "firebase/database";
+
 const Meals = [
   {
     mealNumber: '01',
@@ -62,13 +64,24 @@ const Meals = [
 ]
 const MealPlanner = () => {
   const [Meal, setMeal] = useState(Meals)
+  const [userID,setuserID]=useState("")
     const onChangeInput = (e, mealNumber) => {
     const { name, value } = e.target
     const editMeal = Meal.map((item) =>
         item.mealNumber === mealNumber && name ? { ...item, [name]: value } : item
     )
     setMeal(editMeal)
+    const db = getDatabase();
+    
+    //get user details insert them here
+    //setuserID("val")
+    set(ref(db, 'Meal Planner'), {
+        
+        meal : Meal,
+    });
   }
+
+
   return (
       <div >
         <Navbar/>

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Search from "./RecipeSearch";
 import Navbar from "./Nav"
 import fruit from "./fruit.png"
-import "./favorites.css"
+import "./Favorites.css"
 
 function Favorites({onNewRecipe}) {
     const [ formData, setFormData ] = useState({
