@@ -18,6 +18,26 @@
     height:100%;
     background-color: white;
 }
+#card-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.favorite-btn {
+    margin-top: 7px;
+    stroke: rgba(0,0,0,0.5);
+    fill:rgb(198, 215, 220); 
+    height: 44px; 
+    width: 44px;
+}
+.unfavorite-btn { 
+    margin-top: 7px;
+    fill: rgb(255, 230, 0);
+    stroke: rgb(255, 230, 0);
+    height: 44px; 
+    width: 44px;
+}
 .content2{
     box-shadow: #760c1c 20px;
     background:rgb(255, 247, 247) 2px;
