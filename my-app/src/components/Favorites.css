@@ -74,4 +74,8 @@
     margin-bottom: 5px;
     margin-left: 70px;
     text-align: left;
+   
+}
+.form-container input{
+    width:fit-content
 }

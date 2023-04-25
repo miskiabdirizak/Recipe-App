@@ -3,6 +3,8 @@ import  firebase from "firebase/compat/app";
 import "firebase/compat/auth"  
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase} from "firebase/database"
+import "firebase/compat/firestore"
+import "https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,7 +14,7 @@ import { getDatabase} from "firebase/database"
 const app =firebase.initializeApp({
   apiKey: "AIzaSyBn0B9fK-MSU0KiZjjGo-OkxAOpJ1yQUUc",
   authDomain: "recipe-app-1b4a0.firebaseapp.com",
-  databaseURL: "https://recipe-app-1b4a0-default-rtdb.firebaseio.com/",
+  databaseURL: "https://recipe-app-1b4a0-default-rtdb.firebaseio.com",
   projectId: "recipe-app-1b4a0",
   storageBucket: "recipe-app-1b4a0.appspot.com",
   messagingSenderId: "408386340600",
@@ -22,7 +24,7 @@ const app =firebase.initializeApp({
 
 // Initialize Firebase
 const analytics = getAnalytics(app);
-
+export const firestore = firebase.firestore()
 export const database = getDatabase(app);
 export const auth = app.auth()
 export default app

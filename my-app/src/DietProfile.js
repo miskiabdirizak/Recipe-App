@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react';
-
-import './Dietary.css';
 import AppBar from './components/DietaryProfile/AppBar/AppBar'
 import AppControlsCounter from './components/DietaryProfile/AppControls/AppControlsCounter';
 import AppControlsDelete from './components/DietaryProfile/AppControls/AppControlsDelete';
@@ -8,10 +6,12 @@ import AppControlsInput from './components/DietaryProfile/AppControls/AppControl
 import AppMealsList from './components/DietaryProfile/AppMealsList/AppMealsList';
 import AppModal from './components/DietaryProfile/AppModal/AppModal';
 import AppMealsFilter from './components/DietaryProfile/AppMealsFilter/AppMealsFilter';
-
+import "./Diet.css"
 import ExerciseControlsInput from './components/DietaryProfile/AppControls/ExerciseControlsInput'
 import AppExerciseList from './components/DietaryProfile/AppMealsList/AppExerciseList';
-
+import { Card } from 'react-bootstrap';
+import { SvgIcon } from '@mui/material';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
 
 import Navbar from './components/Nav';
 
@@ -136,25 +136,29 @@ const DietProfile = () => {
   // {openModal? <AppModal setOpenModal={setOpenModal}/> : ""}    //if openModal is true use first argument else use second
 
   return (
-    <div className="Diet">
+    <div>
       <Navbar />
       <AppBar />
+       <div className="Diet">
       {openModal? <AppModal setOpenModal={setOpenModal}/> : ""}
       <AppControlsCounter total ={exTotal}/>
       <AppControlsDelete deleteAllMeals={deleteAllMeals} />
 
       <AppControlsInput addMealsHandler = {addMealsHandler} mealName={mealName} calories = {calories}
           setMealName={setMealName} setCalories={setCalories} />
-
+    
       <div className='app_meals_container'>
         <AppMealsFilter selectedFilter ={selectedFilter} setSelectedFilter = {setSelectedFilter}/>
         <AppMealsList meals={meals} deleteMealHandler={deleteMealHandler}/>
+        <SvgIcon component={FastfoodIcon} color='warning' fontSize='20px'/>
         <ExerciseControlsInput addExerciseHandler={addExerciseHandler} exerciseName={exerciseName} caloriesBurned={caloriesBurned}
           setCaloriesBurned={setCaloriesBurned} setexerciseName={setexerciseName}/>
         <AppExerciseList exercises={exercises} deleteExerciseHandler={deleteExerciseHandler}/>
       </div>
     </div>
-  );
+
+    </div>
+     );
 }
 
 export default DietProfile;

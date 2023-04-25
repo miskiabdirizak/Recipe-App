@@ -1,34 +1,31 @@
-h1 {
+.planner h1 {
     text-align: center;
     padding: 30px 30px;
     color: #ffffff;
   }
-  h3 {
+  .planner h3 {
     text-align: center;
     padding: 30px 30px;
     color: #ea7d7d;
-  }
-  body {
-    background-color: #d9c1c1;
   }
   #Ingredient-list {
     width: 100px;
     margin: 50px;
   }
-  form,.Ingredient {
+  .planner form,.Ingredient {
     padding: 20px 30px;
     text-align: center;
   }
-  form {
+  .planner form {
     justify-content: space-between;
     text-align: center;
   }
-  form input {
+  .planner form input {
     margin-right: 50px;
     text-align: center;
     width: 200px;
   }
-  button {
+  .planner button {
     font-size: 30px;
     background-color: #ffffff;
     color: #000000;
@@ -38,7 +35,7 @@ h1 {
   
   
   }
-  input[type='text'] { font-size: 21px; color: #000000; font-family: monospace; }
+  .planner input[type='text'] { font-size: 21px; color: #000000; font-family: monospace; }
   .todo-text input {
     padding: 5px;
     text-align: center;
@@ -56,11 +53,11 @@ h1 {
     justify-content: space-between;
     text-align: center;
   }
-  table {
+  .planner table {
     width: 100%;
   }
   
-  tr th {
+  .planner tr th {
     font-size: 20px;
     padding: 10px;
     text-align: center;

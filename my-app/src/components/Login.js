@@ -3,7 +3,16 @@ import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import Navbar from './Nav';
-import './Login.css'
+
+import {
+    MDBContainer,
+    MDBInput,
+    MDBCheckbox,
+    MDBBtn,
+    MDBIcon
+  }
+  from 'mdb-react-ui-kit';
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -12,6 +21,7 @@ const Login = () => {
 
     const onLogin = (e) => {
         e.preventDefault();
+        console.log("logged ins")
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
@@ -30,32 +40,49 @@ const Login = () => {
     return(
    
    <div>
-   <Navbar/>
-   <div className="login">
-       <div className="auth-form-container">
-           <h2>Login</h2>
-           <form className="login-form" onSubmit={onLogin}>
-               <label htmlFor="email">Email Address</label>
-               <input 
-                   value={email} 
-                   onChange={(e) => setEmail(e.target.value)} 
-                   type="email" placeholder="youremail@gmail.com"
-                   id="email" 
-                   name = "email"
-               />
-               <label htmlFor="password">Password</label>
-               <input value={password} onChange={(e) => setPassword(e.target.value)}  type="password" placeholder="*******" id="password" name = "password"/>
-               <button type="submit"> Log In</button>
+    <Navbar/>
+    <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+        <h2>Login</h2>
+<form onSubmit={(e)=>{onLogin(e)}}>
+<MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email' onChange={(e)=>{
+    setEmail(e.target.value)
+}}/>
+<MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password' onChange={(e)=>{
+    setPassword(e.target.value)
+}}/>
 
-           </form>
-           <p>
-            No account yet? {' '}
-            <NavLink to="/Signup">
-                Sign up
-            </NavLink>
-            </p>
+<div className="d-flex justify-content-between mx-3 mb-4">
+  <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
+  <a href="!#">Forgot password?</a>
 </div>
-   </div>
+
+<MDBBtn className="mb-4" type="submit">Sign in</MDBBtn>
+
+<div className="text-center">
+  <p>Not a member? <NavLink to="/Signup">Register</NavLink></p>
+  <p>or sign up with:</p>
+
+  <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
+    <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+      <MDBIcon fab icon='facebook-f' size="sm"/>
+    </MDBBtn>
+
+    <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+      <MDBIcon fab icon='twitter' size="sm"/>
+    </MDBBtn>
+
+    <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+      <MDBIcon fab icon='google' size="sm"/>
+    </MDBBtn>
+
+    <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+      <MDBIcon fab icon='github' size="sm"/>
+    </MDBBtn>
+
+  </div>
+</div>
+    </form>
+</MDBContainer>
    </div>
     )
 }

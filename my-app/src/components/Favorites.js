@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Search from "./RecipeSearch";
-import "./Favorites.css";
 import Navbar from "./Nav"
 import fruit from "./fruit.png"
+import "./favorites.css"
 
 function Favorites({onNewRecipe}) {
     const [ formData, setFormData ] = useState({
@@ -61,11 +61,8 @@ function Favorites({onNewRecipe}) {
         <Navbar />
         <div className="bottom">
         <h2>Add your own recipes</h2>
-        <img src={fruit} width="50px" height="50px"></img>
-        <div className="headbox">
-        <p>Find out how to make delicious meals for you.</p>
-        <p>We have hundreds of options to satisfy your dietary needs and preferences.</p>
-        </div>
+    
+      
       </div>
         <div className="form-container">
         <div className="new-recipe-form">

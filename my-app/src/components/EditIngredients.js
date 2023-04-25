@@ -1,32 +1,52 @@
 import React from "react";
-import "./EditIngredients.css";
 import Navbar from "./Nav";
-
+import {firestore} from "../firebase/firebase"
+import { update } from "firebase/database";
 const EditIngredients = () => {
+  
   const [Ingredients, setIngredients] = React.useState([]);
   const [Ingredient, setIngredient] = React.useState("");
-  React.useEffect(() => {
-    const json = localStorage.getItem("Ingredients");
-    const loadedIngredients = JSON.parse(json);
-    if (loadedIngredients) {
-      setIngredients(loadedIngredients);
-    }
-  }, []);
-  React.useEffect(() => {
-    const json = JSON.stringify(Ingredients);
-    localStorage.setItem("Ingredients", json);
-  }, [Ingredients]);
+  const [APIlist,setAPIlist] = React.useState([]) 
+  React.useEffect(()=>{
+    const cleanUp = firestore
+    .collection('Ingredients')
+    .onSnapshot(snapshot=>{
+      const items = snapshot.docs
+      .map(val=>{
+        return {label:val.data().label,...val.data()};
+      })
+      setIngredients(items)
+    })
+    return () => cleanUp()
+  },[])
+ 
+ 
   function handleSubmit(e) {e.preventDefault();
     const newIngredient = {
-      id: new Date().getTime(),
-      text: Ingredient
+      label: Ingredient,
+      id: new Date()
     };
+    firestore
+    .collection('Ingredients')
+    .add(newIngredient)
+    .catch((err)=>{
+      throw err;
+    })
+
     setIngredients([...Ingredients].concat(newIngredient));
     setIngredient("");
   }
   function deleteIngredient(id) {
-    let updatedIngredients = [...Ingredients].filter((Ingredient) => Ingredient.id !== id);
-    setIngredients(updatedIngredients);
+    firestore.collection('Ingredients').onSnapshot(sn=>{
+      sn.docs.map(d=>{
+        const aid = d.id
+        console.log(d.data().id,id)
+        if(d.data().id.seconds == id.seconds){
+          firestore.collection('Ingredients').doc(aid).delete()
+        }
+      })
+      
+    })
   }
   return (
       <div id="todo-list">
@@ -40,18 +60,18 @@ const EditIngredients = () => {
           />
           <button type="submit">Add Ingredient</button>
         </form>
-        {Ingredients.map((Ingredient) => (
-            <div key={Ingredient.id} className="Ingredient">
-              <div className="Ingredient-text">
-                {(
-                    <div>{Ingredient.text}</div>
-                )}
-              </div>
-              <div className="-actions">
-                <button onClick={() => deleteIngredient(Ingredient.id)}>Delete</button>
-              </div>
-            </div>
-        ))}
+        {<div>
+          {Ingredients.map((val)=>{
+              return (
+                <div key={val.id}>
+                  {val.label}
+                  <div>
+                    <button onClick={()=>{deleteIngredient(val.id)}}>delete</button>
+                  </div>
+                </div>
+              )
+          })}
+        </div>}
       </div>
   );
 };
