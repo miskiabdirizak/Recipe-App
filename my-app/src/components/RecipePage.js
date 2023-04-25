@@ -28,7 +28,7 @@ return (
   {type}
 </Popover.Body>
 </Popover>)}
-const RecipePage = (val, onFavoritedRecipe, favorite)=>{
+const RecipePage = (val)=>{
     const [ingredients,setIngredients] = useState([])
     const [ isFavorited, setIsFavorited ] = useState(favorite)
     const handleFavoritedChange = () => {
