@@ -76,7 +76,7 @@ const MealPlanner = () => {
     //get user details insert them here
     //setuserID("val")
     set(ref(db, 'Meal Planner'), {
-        
+
         meal : Meal,
     });
   }
