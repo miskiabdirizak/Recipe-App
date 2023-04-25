@@ -21,7 +21,7 @@ const Navbar = ()=>{
          <Link to = "/EditIngredients">Add Ingredients</Link>
          </li>
          <li>
-         <Link to = "/Favorites">Favorites</Link>
+         <Link to = "/Favorites">Your Recipes</Link>
          </li>
          <li>
          <Link to = "/MealPlanner">Meal Planner</Link>
