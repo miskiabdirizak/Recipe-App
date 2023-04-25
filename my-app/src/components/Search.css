@@ -1,44 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Blinker&display=swap');
-.App{
-  min-height: 100vh;
-
-}
 .title{
   height: fit-content;
   text-align: center;
-}
-.search-form{
-  min-height: 10vh;
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  transform: translate(-50px,-20px);
-}
-
-.search-bar{
-  width: 200px;
-  border: black solid;
-  padding: 10px;
-}
-
-.search-button{
-  background: lightcoral;
-  border: none;
-  padding: 10px 20px;
-  color: white;
+  font-family: 'Blinker', sans-serif;
+  
 }
 
 .cards {
-  box-shadow: rgb(114, 114, 114) 5px 5px;
+  
   display: grid;
   flex-wrap: wrap;
   list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   margin: auto;
-  width: 60%;
+  width: 100%;
   padding: 10px;
-  border:solid rgb(114, 114, 114) 1px;
 
 }
 
@@ -47,22 +25,4 @@
   border-bottom: 3px solid black ;
 }
 
-.bottom{
 
-  font-size: 20px;
-  
-  text-align:center;
-  color: rgb(101, 90, 112);
-  
-  background-color: aquamarine;
-
-}
-.headbox{
-  border: 5px solid rgb(128, 128, 128);
-  background-color: rgb(181, 246, 157);
-  width:fit-content;
-  box-shadow: 5px 5px  rgb(88, 88, 88);
-  color:black;margin: auto;
-  width: 60%;
-  padding: 10px;
-}

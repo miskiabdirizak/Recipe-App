@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import './Planner.css'
 import Navbar from './Nav'
 import { Nav } from 'react-bootstrap'
+import "./planner.css"
 const Meals = [
   {
     mealNumber: '01',
@@ -70,8 +70,9 @@ const MealPlanner = () => {
     setMeal(editMeal)
   }
   return (
-      <div>
+      <div >
         <Navbar/>
+        <div className='planner'>
         <h1>Meal Planning Page</h1>
         <h3>Use this page to plan meals for one week at a time.</h3>
         <table>
@@ -139,6 +140,7 @@ const MealPlanner = () => {
         <div>
           <button>Save</button>
         </div>
+      </div>
       </div>
 
   )}

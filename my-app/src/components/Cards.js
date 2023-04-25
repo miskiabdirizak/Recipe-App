@@ -7,7 +7,6 @@
 import react, { useEffect } from "react";
 import {useState} from "react"
 import ListItem  from './ListItem';
-import "./card.css"
 import Typography from "@mui/joy/Typography/Typography";
 import { Divider } from '@mui/material';
 import Grid from '@mui/material/Grid';
@@ -15,13 +14,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
-import { database } from "../firebase/firebase";
+import { getDatabase,ref,set } from "firebase/database";
 
 
 const CardComponent = ()=>{
     const [weight,setWeight] = useState(0)
     const [diet,setDiet] = useState("")
     const [goal,setGoal] = useState("")
+    const [userID,setuserID]=useState("")
     const [next,setNext]=useState(0)
     const [choice1,setChoice1] = useState(0)
     const [choice3,setChoice3] = useState(0)
@@ -33,17 +33,17 @@ const CardComponent = ()=>{
     const [preferences, SetPreferences] = useState(null); 
 
     const submit = ()=>{
-        setGoal(Text1[choice1])
-        setDiet(Text3[choice3])
         //axios.get("http//localhost:3001/SetPreferences:?Goal=${goal}&Diet=${diet}&weight={weight}")
-        database.ref('preferences').push({
-            goal : Text1[choice1],
-            diet: Text3[choice3], 
-            weight: weight,  
+        const db = getDatabase();
+        setNext(next+1)
+        //get user details insert them here
+        setuserID("val")
+        set(ref(db, 'preferences'), {
+            goal:goal,
+            diet: diet,
+            weight : weight,
+            userID:userID
         });
-        database.ref('preferences').once('value').then((snapshot)=>{
-            SetPreferences(snapshot.val());
-        })
     };
 
     const currSet=(num)=>{
@@ -165,9 +165,9 @@ const CardComponent = ()=>{
                                 <h2 className="cardtitle"> Good To Go</h2>
                             
                             </Grid> 
-                            Your Goal:<ListItem text={preferences.goal}/>
-                           Your Weight: <ListItem text= {preferences.weight} />
-                            Your Diet:<ListItem text = {preferences.diet} />
+                            Your Goal:<ListItem text={goal}/>
+                           Your Weight: <ListItem text= {weight} />
+                            Your Diet:<ListItem text = {diet} />
                             Thank you for completing your goals questions 
                         </List>
                         <Button variant="contained" onClick={submit} 

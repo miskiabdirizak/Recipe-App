@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 
 import Collapse from '@mui/material/Collapse';
-
+import Badge from 'react-bootstrap/Badge';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
@@ -14,7 +14,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Divider } from '@mui/material';
 import FadeSection from "./FadeSection.js"
-import "./Recipe.css"
 import {Link} from "react-router-dom"
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -33,7 +32,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 
-const Recipe = ({ title, image, ingredients,nut,calories,servings,recipe }) => {
+const Recipe = ({ title, image, ingredients,nut,calories,servings,recipe,pref }) => {
 
   const [expanded, setExpanded] = React.useState(false);
 
@@ -58,6 +57,15 @@ const Recipe = ({ title, image, ingredients,nut,calories,servings,recipe }) => {
   vitamin = nut.VITC
   vitaminType = "C"
   }
+  const highlight = ()=>{
+    return (
+      <div>
+      <Badge bg="success">
+        Your best Option
+      </Badge>
+      </div>
+    )
+  }
   return (
 <FadeSection className="card">
 <Card sx = {{maxWidth:300,display:"flex"}}>
@@ -74,8 +82,7 @@ const Recipe = ({ title, image, ingredients,nut,calories,servings,recipe }) => {
       <div className="card2">
        
         <h1 className="card_title">{title}</h1>
-        {/* food label */}
-          
+          {pref === title?highlight():null }
             <CardContent sx = {{flexDirection:"column"}}>
             View Label
             <ExpandMore
