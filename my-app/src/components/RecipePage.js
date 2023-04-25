@@ -3,6 +3,8 @@ import "./RecipePage.css"
 import Navbar from "./Nav";
 import foodpng from "./fruit.png"
 import Divider from "@mui/material/Divider"
+import React, {useState} from "react";
+
 const RecipePage = (val, onFavoritedRecipe, favorite)=>{
     let location = useLocation();
     console.log(location)
