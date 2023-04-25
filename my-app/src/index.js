@@ -11,7 +11,7 @@ import DietProfile from './DietProfile';
 import Recipe from './components/RecipePage';
 import EditIngredients from './components/EditIngredients';
 import Favorites from './components/Favorites';
-
+import MealPlanner from './components/Planner';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,6 +28,7 @@ root.render(
       <Route path='/DietProfile' element = {<DietProfile/>}/>
       <Route path="/EditIngredients" element ={<EditIngredients />} />
       <Route path="/Favorites" element ={<Favorites />} />
+      <Route path="/MealPlanner" element ={<MealPlanner />} />
 
     </Routes>
     </BrowserRouter>

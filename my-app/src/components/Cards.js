@@ -15,6 +15,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
+import { database } from "../firebase/firebase";
 
 
 const CardComponent = ()=>{
@@ -29,12 +30,22 @@ const CardComponent = ()=>{
         const Title3 = "Do you have any diet preferences?"
         const Text1 =["Weight Loss","Eat Healthier","Try any food"]
         const Text3 =["Keto","Vegan","Vegetarian" ,"any"]
+    const [preferences, SetPreferences] = useState(null); 
 
     const submit = ()=>{
         setGoal(Text1[choice1])
         setDiet(Text3[choice3])
         //axios.get("http//localhost:3001/SetPreferences:?Goal=${goal}&Diet=${diet}&weight={weight}")
-    }
+        database.ref('preferences').push({
+            goal : Text1[choice1],
+            diet: Text3[choice3], 
+            weight: weight,  
+        });
+        database.ref('preferences').once('value').then((snapshot)=>{
+            SetPreferences(snapshot.val());
+        })
+    };
+
     const currSet=(num)=>{
         switch(num){
             case 0:
@@ -153,17 +164,13 @@ const CardComponent = ()=>{
                                     
                                 <h2 className="cardtitle"> Good To Go</h2>
                             
-                            </Grid>
-                            Your Goal:<ListItem text={goal}/>
-                           Your Weight: <ListItem text= {weight} />
-                            Your Diet:<ListItem text = {diet} />
+                            </Grid> 
+                            Your Goal:<ListItem text={preferences.goal}/>
+                           Your Weight: <ListItem text= {preferences.weight} />
+                            Your Diet:<ListItem text = {preferences.diet} />
                             Thank you for completing your goals questions 
                         </List>
-                        <Button variant="contained" onClick={()=>{
-                        setDiet(Text3[choice3])
-                        setNext(next+1)
-                    
-                        }} 
+                        <Button variant="contained" onClick={submit} 
                         >End
                         </Button>
                         </Grid>

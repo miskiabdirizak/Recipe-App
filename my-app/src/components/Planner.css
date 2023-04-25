@@ -1,0 +1,69 @@
+h1 {
+    text-align: center;
+    padding: 30px 30px;
+    color: #ffffff;
+  }
+  h3 {
+    text-align: center;
+    padding: 30px 30px;
+    color: #ea7d7d;
+  }
+  body {
+    background-color: #d9c1c1;
+  }
+  #Ingredient-list {
+    width: 100px;
+    margin: 50px;
+  }
+  form,.Ingredient {
+    padding: 20px 30px;
+    text-align: center;
+  }
+  form {
+    justify-content: space-between;
+    text-align: center;
+  }
+  form input {
+    margin-right: 50px;
+    text-align: center;
+    width: 200px;
+  }
+  button {
+    font-size: 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 20px;
+    padding: 10px 40px;
+    text-align: center;
+  
+  
+  }
+  input[type='text'] { font-size: 21px; color: #000000; font-family: monospace; }
+  .todo-text input {
+    padding: 5px;
+    text-align: center;
+  
+  }
+  .Ingredient-text {
+    font-size: 20px;
+    line-height: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+  }
+  .todo-actions {
+    justify-content: space-between;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+  }
+  
+  tr th {
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+  
+  }
+  

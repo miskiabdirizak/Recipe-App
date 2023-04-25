@@ -23,6 +23,9 @@ const Navbar = ()=>{
          <li>
          <Link to = "/Favorites">Favorites</Link>
          </li>
+         <li>
+         <Link to = "/MealPlanner">Meal Planner</Link>
+         </li>
     </ul>)
 } 
 export default Navbar;
