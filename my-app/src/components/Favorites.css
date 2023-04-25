@@ -1,20 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Blinker&display=swap');
-
-.App{
-  min-height: 100vh;
- 
+* :not(.website-title){
+    font-family: Prompt, 'Times New Roman', Times, serif;
+    /* font-family: 'Coda', cursive; */
 }
-.headbox{
-    border: 5px solid rgb(128, 128, 128);
-    background-color: rgb(181, 246, 157);
-    width:fit-content;
-    box-shadow: 5px 5px  rgb(88, 88, 88);
-    color:black;margin: auto;
-    width: 60%;
-    padding: 10px;
-  }
-
-  .bottom{
+.bottom{
 
     font-size: 20px;
     
@@ -24,3 +12,66 @@
     background-color: aquamarine;
   
   }
+
+#header {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+    padding-left: 15px;
+}
+
+.resort-name {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.new-recipe-form {
+    background-color: aliceblue;
+    text-align: center;
+    padding: 20px;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    margin-right: 500px;
+    margin-left: 500px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.form-container {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    width: 100%;
+    height: 100%;
+    background-repeat: none;
+    color: rgb(34, 53, 60);
+}
+
+.form-recipename {
+    font-size: 30px;
+    padding: 5px; 
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 700px;
+}
+
+.form-recipeingredients, .form-recipeinstructions, .form-recipenutrition, .form-recipeurl, .form-recipeimage {
+    font-size: 30px;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 700px;
+}
+
+.form-labels {
+    font-size: 30px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 70px;
+    text-align: left;
+}
