@@ -30,20 +30,17 @@ return (
 </Popover>)}
 const RecipePage = (val, onFavoritedRecipe, favorite)=>{
     const [ingredients,setIngredients] = useState([])
-    const [ isFavorited, setIsFavorited ] = useState(favorite)
-    const handleFavoritedChange = () => {
-        setIsFavorited(isFavorited => !isFavorited)
-        fetch(`http://localhost:3000/recipes`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        }, 
-        body: JSON.stringify({favorite: !favorite})
-        })
-            .then(response => response.json())
-            .then((updatedRecipe)=> onFavoritedRecipe(updatedRecipe))
-            // .then(updatedResort => setIsFavorited ? onFavoritedResort(updatedResort) : onUnfavoriteResort(updatedResort))
-    }
+    const [ isFavorited, setIsFavorited ] = useState(false);
+    useEffect(() => {
+        const storedValue = localStorage.getItem('isFavorited');
+        if (storedValue !== null) {
+          setIsFavorited(JSON.parse(storedValue));
+        }
+      }, []);
+    function handleFavoritedChange () {
+    setIsFavorited(isFavorited => !isFavorited)
+    localStorage.setItem('isFavorited', JSON.stringify(!isFavorited)); }
+  
     var inpantry = false;
         useEffect(()=>{
         const cleanUp = firestore
