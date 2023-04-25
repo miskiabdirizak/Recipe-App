@@ -17,7 +17,7 @@ const Bar = ()=>{
                     <Nav.Link href="/EditIngredients">Pantry</Nav.Link>
                     <Nav.Link href="/DietProfile">Profile</Nav.Link>
                     <Nav.Link href="/Login">Login</Nav.Link>
-                    <Nav.Link href = "/Favorites">Favorites </Nav.Link>
+                    <Nav.Link href = "/Favorites">Your Recipes</Nav.Link>
                     <Nav.Link href = "/MealPlanner">Meal Planner</Nav.Link>
                 </Nav>
 
